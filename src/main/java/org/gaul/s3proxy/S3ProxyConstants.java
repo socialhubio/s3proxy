@@ -82,6 +82,9 @@ public final class S3ProxyConstants {
     /** Prevent mutations. */
     public static final String PROPERTY_READ_ONLY_BLOBSTORE =
             "s3proxy.read-only-blobstore";
+    /** Sends http requests on blob creation. */
+    public static final String PROPERTY_WEBHOOK =
+            "s3proxy.webhook";
 
     /** Maximum time skew allowed in signed requests. */
     public static final String PROPERTY_MAXIMUM_TIME_SKEW =

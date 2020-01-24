@@ -224,6 +224,13 @@ public final class Main {
             blobStore = ReadOnlyBlobStore.newReadOnlyBlobStore(blobStore);
         }
 
+        String webhook = properties.getProperty(
+                S3ProxyConstants.PROPERTY_WEBHOOK);
+        if (!Strings.isNullOrEmpty(webhook)) {
+            System.err.println("Using webhook middleware");
+            blobStore = WebhookBlobStore.newWebhookBlobStore(blobStore, webhook);
+        }
+
         return blobStore;
     }
 

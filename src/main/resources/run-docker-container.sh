@@ -3,6 +3,7 @@
 exec java \
     -DLOG_LEVEL=${LOG_LEVEL} \
     -Ds3proxy.endpoint=http://0.0.0.0:80 \
+    -Ds3proxy.webhook=${S3PROXY_WEBHOOK} \
     -Ds3proxy.virtual-host=${S3PROXY_VIRTUALHOST} \
     -Ds3proxy.authorization=${S3PROXY_AUTHORIZATION} \
     -Ds3proxy.identity=${S3PROXY_IDENTITY} \
