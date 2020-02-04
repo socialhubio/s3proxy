@@ -32,6 +32,7 @@ import org.jclouds.blobstore.util.ForwardingBlobStore;
 import org.jclouds.domain.Location;
 import org.jclouds.io.Payload;
 
+import org.apache.commons.io.FilenameUtils;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
@@ -59,7 +60,7 @@ final class WebhookBlobStore extends ForwardingBlobStore {
                 List<NameValuePair> urlParameters = new ArrayList<>();
                 urlParameters.add(new BasicNameValuePair("bucket", containerName));
                 urlParameters.add(new BasicNameValuePair("key", name));
-                HttpPost post = new HttpPost(this.webhook);
+                HttpPost post = new HttpPost(this.webhook + FilenameUtils.getExtension(name));
                 post.setEntity(new UrlEncodedFormEntity(urlParameters));
                 httpClient.execute(post);
             } finally {
